@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Revende · Tu copiloto de reventa</title>
+
+<!-- ENLACES PARA PWA Y APK -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#5b5ce2">
+<link rel="apple-touch-icon" href="icon-192.png">
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('Service Worker registrado con éxito:', reg))
+        .catch(err => console.error('Error al registrar Service Worker:', err));
+    });
+  }
+</script>
+
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#718096;--primary:#5b5ce2;--primary2:#7c3aed;--green:#16a34a;--red:#dc2626;--border:#e7eaf0;--shadow:0 10px 30px rgba(30,41,59,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button,input,select{font:inherit}button{cursor:pointer;border:0}.app{display:flex;min-height:100vh}.sidebar{width:240px;background:#11152a;color:white;padding:24px 16px;position:fixed;height:100vh}.brand{font-size:23px;font-weight:800;padding:8px 12px 28px}.brand span{color:#9b9cff}.nav button{width:100%;padding:12px 14px;margin:4px 0;background:transparent;color:#c8ccda;text-align:left;border-radius:10px}.nav button.active,.nav button:hover{background:#252a49;color:white}.main{margin-left:240px;width:calc(100% - 240px);padding:28px;max-width:1400px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}.top h1{margin:0;font-size:28px}.sub{color:var(--muted);font-size:14px;margin-top:5px}.btn{background:var(--primary);color:#fff;padding:11px 16px;border-radius:10px;font-weight:700}.btn.secondary{background:#eef0ff;color:var(--primary)}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:20px;box-shadow:var(--shadow)}.metric{font-size:27px;font-weight:800;margin-top:7px}.label{color:var(--muted);font-size:13px}.delta{font-size:12px;margin-top:8px;color:var(--green)}.section{margin-top:22px}.section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.section-title h2{font-size:18px;margin:0}.two{display:grid;grid-template-columns:1.3fr .7fr;gap:18px}.product{display:flex;align-items:center;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--border)}.product:last-child{border-bottom:0}.prod-left{display:flex;gap:12px;align-items:center}.icon{width:42px;height:42px;border-radius:12px;background:#eef0ff;display:grid;place-items:center;font-size:21px}.prod-name{font-weight:700}.small{font-size:12px;color:var(--muted);margin-top:3px}.pill{padding:5px 8px;border-radius:999px;font-size:11px;font-weight:700;background:#eaf8ef;color:var(--green)}.pill.warn{background:#fff4db;color:#a16207}.pill.danger{background:#feecec;color:var(--red)}.recommend{background:linear-gradient(135deg,#5b5ce2,#7c3aed);color:white;border:0}.recommend .small{color:#ddd}.progress{height:8px;background:#eceef5;border-radius:99px;overflow:hidden;margin-top:10px}.bar{height:100%;background:var(--primary);border-radius:99px}.recommend .bar{background:white}.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--border);font-size:14px}.table th{color:var(--muted);font-size:12px}.view{display:none}.view.active{display:block}.form{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}.field label{font-size:12px;color:var(--muted);font-weight:700}.field input,.field select{border:1px solid var(--border);padding:11px 12px;border-radius:10px;outline:none;background:#fff}.field input:focus,.field select:focus{border-color:var(--primary)}.modal{position:fixed;inset:0;background:rgba(10,15,30,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:10}.modal.show{display:flex}.modalbox{background:white;border-radius:18px;width:min(600px,100%);padding:24px}.modalhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}.close{background:#f1f2f6;border-radius:8px;width:34px;height:34px}.empty{padding:30px;text-align:center;color:var(--muted)}.toast{position:fixed;right:20px;bottom:20px;background:#11152a;color:white;padding:13px 17px;border-radius:10px;display:none;z-index:20}.toast.show{display:block}.chart{height:210px;display:flex;align-items:end;gap:10px;padding-top:20px}.col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}.barc{width:100%;max-width:42px;background:var(--primary);border-radius:7px 7px 2px 2px}.col span{font-size:11px;color:var(--muted)}.notice{padding:14px;border-radius:12px;background:#f4f1ff;color:#4535a5;font-size:13px;line-height:1.5}.dangerbox{padding:14px;border-radius:12px;background:#fff5f5;color:#991b1b;font-size:13px}@media(max-width:900px){.sidebar{width:70px;padding:16px 8px}.brand{font-size:0;text-align:center}.brand:after{content:"R";font-size:24px}.nav button{font-size:0;text-align:center}.nav button::first-letter{font-size:20px}.main{margin-left:70px;width:calc(100% - 70px);padding:18px}.grid{grid-template-columns:repeat(2,1fr)}.two{grid-template-columns:1fr}}@media(max-width:600px){.grid{grid-template-columns:1fr}.form{grid-template-columns:1fr}.top{gap:12px;align-items:flex-start}.top .btn{padding:9px 11px}.metric{font-size:23px}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand">Re<span>vende</span></div>
+  <div class="nav">
+    <button class="active" onclick="showView('dashboard',this)">🏠 &nbsp;Inicio</button>
+    <button onclick="showView('inventario',this)">📦 &nbsp;Inventario</button>
+    <button onclick="showView('ventas',this)">💰 &nbsp;Ventas</button>
+    <button onclick="showView('clientes',this)">👥 &nbsp;Clientes</button>
+    <button onclick="showView('precios',this)">🧮 &nbsp;Precios</button>
+  </div>
+</aside>
+
+<main class="main">
+  <section id="dashboard" class="view active">
+    <div class="top"><div><h1>Buenos días 👋</h1><div class="sub">Tu negocio, en un vistazo.</div></div><button class="btn" onclick="openSale()">+ Registrar venta</button></div>
+    <div class="grid">
+      <div class="card"><div class="label">Ventas del mes</div><div class="metric" id="mSales">$0</div><div class="delta">↑ Ingresos registrados</div></div>
+      <div class="card"><div class="label">Ganancia estimada</div><div class="metric" id="mProfit">$0</div><div class="delta">↑ Después del costo</div></div>
+      <div class="card"><div class="label">Valor del inventario</div><div class="metric" id="mStock">$0</div><div class="delta">Costo de mercancía</div></div>
+      <div class="card"><div class="label">Productos</div><div class="metric" id="mProducts">0</div><div class="delta">Unidades disponibles</div></div>
+    </div>
+    <div class="section two">
+      <div class="card"><div class="section-title"><h2>📦 Inventario que debes vigilar</h2><button class="btn secondary" onclick="showView('inventario')">Ver todo</button></div><div id="lowStock"></div></div>
+      <div class="card recommend"><div class="section-title"><h2>🧠 Recomendación</h2></div><div id="recommendation">Agrega algunos productos y registra ventas para que la app pueda analizar tu negocio.</div></div>
+    </div>
+    <div class="section two">
+      <div class="card"><div class="section-title"><h2>📈 Ventas recientes</h2></div><div id="recentSales"></div></div>
+      <div class="card"><div class="section-title"><h2>📊 Ventas por día</h2></div><div class="chart" id="chart"></div></div>
+    </div>
+  </section>
+
+  <section id="inventario" class="view">
+    <div class="top"><div><h1>Inventario 📦</h1><div class="sub">Controla productos, costos, precios y existencias.</div></div><button class="btn" onclick="openProduct()">+ Agregar producto</button></div>
+    <div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Producto</th><th>Costo</th><th>Precio</th><th>Ganancia/u.</th><th>Stock</th><th>Acciones</th></tr></thead><tbody id="inventoryTable"></tbody></table></div></div>
+  </section>
+
+  <section id="ventas" class="view">
+    <div class="top"><div><h1>Ventas 💰</h1><div class="sub">Registra y consulta tus operaciones.</div></div><button class="btn" onclick="openSale()">+ Registrar venta</button></div>
+    <div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Fecha</th><th>Producto</th><th>Cant.</th><th>Total</th><th>Ganancia</th><th>Cliente</th></tr></thead><tbody id="salesTable"></tbody></table></div></div>
+  </section>
+
+  <section id="clientes" class="view">
+    <div class="top"><div><h1>Clientes 👥</h1><div class="sub">Una vista sencilla de tus compradores.</div></div></div>
+    <div class="card"><div class="table-wrap"><table class="table"><thead><tr><th>Cliente</th><th>Compras</th><th>Total gastado</th><th>Última compra</th></tr></thead><tbody id="clientsTable"></tbody></table></div></div>
+  </section>
+
+  <section id="precios" class="view">
+    <div class="top"><div><h1>Calculadora de precios 🧮</h1><div class="sub">Descubre cuánto cobrar sin sacar cuentas a mano.</div></div></div>
+    <div class="card">
+      <div class="form">
+        <div class="field"><label>Costo del producto</label><input id="pcost" type="number" min="0" step=".01" placeholder="150"></div>
+        <div class="field"><label>Envío / gastos por unidad</label><input id="pship" type="number" min="0" step=".01" value="0"></div>
+        <div class="field"><label>Comisión (%)</label><input id="pfee" type="number" min="0" step=".1" value="0"></div>
+        <div class="field"><label>Ganancia deseada (%)</label><input id="pmargin" type="number" min="0" step=".1" value="30"></div>
+      </div>
+      <button class="btn" style="margin-top:16px" onclick="calcPrice()">Calcular</button>
+      <div id="priceResult" style="margin-top:18px"></div>
+    </div>
+    <div class="section notice">💡 Consejo: al empezar, prueba varios productos con poco inventario. El producto que se vende rápido y deja una ganancia sana merece más capital.</div>
+  </section>
+</main>
+</div>
+
+<div class="modal" id="productModal"><div class="modalbox">
+  <div class="modalhead"><h2 style="margin:0">Agregar producto</h2><button class="close" onclick="closeModal('productModal')">✕</button></div>
+  <div class="form">
+    <div class="field full"><label>Nombre</label><input id="pname" placeholder="Ej. Audífonos X7"></div>
+    <div class="field"><label>Costo unitario</label><input id="pcost2" type="number" min="0" step=".01" placeholder="150"></div>
+    <div class="field"><label>Precio de venta</label><input id="psale" type="number" min="0" step=".01" placeholder="229"></div>
+    <div class="field"><label>Stock inicial</label><input id="pstock" type="number" min="0" step="1" placeholder="5"></div>
+    <div class="field"><label>Icono</label><select id="picon"><option>🎧</option><option>🔌</option><option>⚡</option><option>🔋</option><option>🖱️</option><option>⌨️</option><option>🔊</option><option>📱</option><option>🎮</option></select></div>
+  </div>
+  <button class="btn" style="margin-top:18px;width:100%" onclick="addProduct()">Guardar producto</button>
+</div></div>
+
+<div class="modal" id="saleModal"><div class="modalbox">
+  <div class="modalhead"><h2 style="margin:0">Registrar venta</h2><button class="close" onclick="closeModal('saleModal')">✕</button></div>
+  <div class="form">
+    <div class="field full"><label>Producto</label><select id="sproduct"></select></div>
+    <div class="field"><label>Cantidad</label><input id="sqty" type="number" min="1" step="1" value="1"></div>
+    <div class="field"><label>Cliente</label><input id="sclient" placeholder="Ej. Juan"></div>
+  </div>
+  <div id="salePreview" class="notice" style="margin-top:15px"></div>
+  <button class="btn" style="margin-top:18px;width:100%" onclick="addSale()">Registrar venta</button>
+</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const KEY='revende_app_v1';
+let state=JSON.parse(localStorage.getItem(KEY)||'null')||{
+ products:[
+  {id:1,name:'Audífonos X7',cost:150,price:229,stock:4,icon:'🎧'},
+  {id:2,name:'Cable USB-C',cost:35,price:69,stock:7,icon:'🔌'},
+  {id:3,name:'Soporte para celular',cost:45,price:89,stock:2,icon:'📱'},
+  {id:4,name:'Bocina Mini',cost:180,price:299,stock:1,icon:'🔊'}
+ ],
+ sales:[],
+ clients:{}
+};
+function save(){localStorage.setItem(KEY,JSON.stringify(state))}
+function money(n){return '$'+Number(n||0).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function showView(id,btn){
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('active')); document.getElementById(id).classList.add('active');
+ document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active')); if(btn)btn.classList.add('active');
+ if(id==='dashboard')render(); if(id==='inventario')renderInventory(); if(id==='ventas')renderSales(); if(id==='clientes')renderClients();
+}
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.classList.add('show');setTimeout(()=>x.classList.remove('show'),2200)}
+function openProduct(){document.getElementById('productModal').classList.add('show')}
+function openSale(){fillSaleProducts();document.getElementById('saleModal').classList.add('show');updateSalePreview()}
+function closeModal(id){document.getElementById(id).classList.remove('show')}
+function addProduct(){
+ const name=document.getElementById('pname').value.trim(),cost=+document.getElementById('pcost2').value,price=+document.getElementById('psale').value,stock=+document.getElementById('pstock').value,icon=document.getElementById('picon').value;
+ if(!name||cost<0||price<=0||stock<0){toast('Completa los datos correctamente');return}
+ state.products.push({id:Date.now(),name,cost,price,stock,icon});save();closeModal('productModal');
+ ['pname','pcost2','psale','pstock'].forEach(x=>document.getElementById(x).value='');render();renderInventory();toast('Producto agregado ✓')
+}
+function deleteProduct(id){if(!confirm('¿Eliminar este producto?'))return;state.products=state.products.filter(p=>p.id!==id);save();render();renderInventory();toast('Producto eliminado')}
+function fillSaleProducts(){
+ const s=document.getElementById('sproduct');s.innerHTML=state.products.filter(p=>p.stock>0).map(p=>`<option value="${p.id}">${p.icon} ${p.name} · ${money(p.price)} · stock ${p.stock}</option>`).join('');
+}
+function updateSalePreview(){
+ const p=state.products.find(x=>x.id==document.getElementById('sproduct').value),q=+document.getElementById('sqty').value||1;
+ document.getElementById('salePreview').innerHTML=p?`Total: <b>${money(p.price*q)}</b> &nbsp; · &nbsp; Ganancia: <b>${money((p.price-p.cost)*q)}</b>`:'No hay productos con stock.';
+}
+document.getElementById('sproduct').addEventListener('change',updateSalePreview);document.getElementById('sqty').addEventListener('input',updateSalePreview);
+function addSale(){
+ const p=state.products.find(x=>x.id==document.getElementById('sproduct').value),q=+document.getElementById('sqty').value,client=document.getElementById('sclient').value.trim()||'Cliente ocasional';
+ if(!p||q<1||q>p.stock){toast('Cantidad no disponible');return}
+ const date=new Date().toLocaleDateString('es-MX',{day:'2-digit',month:'2-digit',year:'numeric'});
+ state.sales.unshift({id:Date.now(),date,productId:p.id,product:p.name,qty:q,total:p.price*q,profit:(p.price-p.cost)*q,client});
+ p.stock-=q;
+ if(!state.clients[client])state.clients[client]={count:0,total:0,last:''};
+ state.clients[client].count+=q;state.clients[client].total+=p.price*q;state.clients[client].last=date;
+ save();closeModal('saleModal');render();renderInventory();renderSales();renderClients();toast('Venta registrada ✓')
+}
+function render(){
+ const sales=state.sales.reduce((a,s)=>a+s.total,0),profit=state.sales.reduce((a,s)=>a+s.profit,0),stockValue=state.products.reduce((a,p)=>a+p.cost*p.stock,0),units=state.products.reduce((a,p)=>a+p.stock,0);
+ document.getElementById('mSales').textContent=money(sales);document.getElementById('mProfit').textContent=money(profit);document.getElementById('mStock').textContent=money(stockValue);document.getElementById('mProducts').textContent=units;
+ const low=state.products.filter(p=>p.stock<=2);
+ document.getElementById('lowStock').innerHTML=low.length?low.map(p=>`<div class="product"><div class="prod-left"><div class="icon">${p.icon}</div><div><div class="prod-name">${esc(p.name)}</div><div class="small">Costo ${money(p.cost)} · Venta ${money(p.price)}</div></div></div><span class="pill ${p.stock===0?'danger':p.stock<=1?'danger':'warn'}">${p.stock} ${p.stock===1?'unidad':'unidades'}</span></div>`).join(''):'<div class="empty">Todo bajo control. No hay productos con stock bajo.</div>';
+ const recent=state.sales.slice(0,5);document.getElementById('recentSales').innerHTML=recent.length?recent.map(s=>`<div class="product"><div><div class="prod-name">${esc(s.product)}</div><div class="small">${s.date} · ${s.client}</div></div><div><b>${money(s.total)}</b><div class="small">+${money(s.profit)}</div></div></div>`).join(''):'<div class="empty">Aún no hay ventas.</div>';
+ let rec='Agrega productos y registra algunas ventas para recibir recomendaciones.';
+ if(state.sales.length){
+  const by={};state.sales.forEach(s=>by[s.product]=(by[s.product]||0)+s.profit);const top=Object.entries(by).sort((a,b)=>b[1]-a[1])[0];
+  const low2=state.products.filter(p=>p.stock<=2).map(p=>p.name);
+  rec=`Tu producto más rentable hasta ahora es <b>${esc(top[0])}</b>, con <b>${money(top[1])}</b> de ganancia acumulada.${low2.length?`<br><br>🚨 Revisa stock de: <b>${esc(low2.join(', '))}</b>.`:''}`;
+ }
+ document.getElementById('recommendation').innerHTML=rec;renderChart();
+}
+function renderChart(){
+ const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push({key:d.toLocaleDateString('es-MX'),lab:d.toLocaleDateString('es-MX',{weekday:'short'}).replace('.',''),total:0})}
+ state.sales.forEach(s=>{const d=days.find(x=>x.key===s.date);if(d)d.total+=s.total});
+ const max=Math.max(...days.map(x=>x.total),1);
+ document.getElementById('chart').innerHTML=days.map(d=>`<div class="col"><div class="barc" style="height:${Math.max(5,d.total/max*145)}px" title="${money(d.total)}"></div><span>${d.lab}</span></div>`).join('')
+}
+function renderInventory(){
+ document.getElementById('inventoryTable').innerHTML=state.products.length?state.products.map(p=>`<tr><td><b>${p.icon} ${esc(p.name)}</b></td><td>${money(p.cost)}</td><td>${money(p.price)}</td><td>${money(p.price-p.cost)}</td><td><span class="pill ${p.stock<=1?'danger':p.stock<=2?'warn':''}">${p.stock}</span></td><td><button class="btn secondary" onclick="deleteProduct(${p.id})">Eliminar</button></td></tr>`).join(''):'<tr><td colspan="6" class="empty">No tienes productos.</td></tr>'
+}
+function renderSales(){document.getElementById('salesTable').innerHTML=state.sales.length?state.sales.map(s=>`<tr><td>${s.date}</td><td><b>${esc(s.product)}</b></td><td>${s.qty}</td><td>${money(s.total)}</td><td>${money(s.profit)}</td><td>${esc(s.client)}</td></tr>`).join(''):'<tr><td colspan="6" class="empty">No hay ventas registradas.</td></tr>'}
+function renderClients(){const arr=Object.entries(state.clients).sort((a,b)=>b[1].total-a[1].total);document.getElementById('clientsTable').innerHTML=arr.length?arr.map(([n,c])=>`<tr><td><b>👤 ${esc(n)}</b></td><td>${c.count}</td><td>${money(c.total)}</td><td>${c.last}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">Tus clientes aparecerán aquí al registrar ventas.</td></tr>'}
+function calcPrice(){
+ const cost=+document.getElementById('pcost').value||0,ship=+document.getElementById('pship').value||0,fee=+document.getElementById('pfee').value||0,margin=+document.getElementById('pmargin').value||0,base=cost+ship;
+ if(base<=0){document.getElementById('priceResult').innerHTML='<div class="dangerbox">Ingresa un costo mayor que cero.</div>';return}
+ const price=base/(1-fee/100-margin/100), fast=base*1.2/(1-fee/100), max=base*1.45/(1-fee/100);
+ document.getElementById('priceResult').innerHTML=`<div class="grid"><div class="card"><div class="label">Venta rápida</div><div class="metric">${money(fast)}</div></div><div class="card"><div class="label">Precio recomendado</div><div class="metric">${money(price)}</div></div><div class="card"><div class="label">Precio alto</div><div class="metric">${money(max)}</div></div><div class="card"><div class="label">Ganancia aprox.</div><div class="metric">${money(price*(1-fee/100)-base)}</div></div></div>`
+}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "short_name": "Revende",
+  "name": "Revende · Tu copiloto de reventa",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "./index.html",
+  "background_color": "#11152a",
+  "theme_color": "#5b5ce2",
+  "display": "standalone",
+  "orientation": "portrait"
+}
